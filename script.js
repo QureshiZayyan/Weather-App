@@ -1,4 +1,6 @@
 
+let InputValue = document.getElementById('input');
+
 function data(cityName) {
     const url = `https://weather-api138.p.rapidapi.com/weather?city_name=${cityName}`
     const options = {
@@ -15,7 +17,7 @@ function addInfo(query) {
     return Math.round(query - 273.15);
 }
 
-function checkWeather(cityName) {
+function FillDataInCard(cityName) {
     data(cityName)
         .then(response => response.json())
         .then(response => {
@@ -23,29 +25,28 @@ function checkWeather(cityName) {
             document.getElementById('humidity').innerHTML = `<strong>Humidity: ${addInfo(response.main.humidity)}</strong>`;
             document.getElementById('feels-like').innerHTML = `<strong>Feels like: ${addInfo(response.main.feels_like)}</strong>`;
             document.getElementById('max-temp').innerHTML = `<strong>Maximum Temperature: ${addInfo(response.main.temp_max)}</strong>`;
-            document.getElementById('min-temp').innerHTML = `<strong>Minumum Temperature: ${addInfo(response.main.temp_min)}</strong>`;
-            document.getElementById('sea-level').innerHTML = `<strong>sea level: ${addInfo(response.main.feels_like)}</strong>`;
+            document.getElementById('min-temp').innerHTML = `<strong>Minimum Temperature: ${addInfo(response.main.temp_min)}</strong>`;
+            document.getElementById('sea-level').innerHTML = `<strong>Sea Level: ${addInfo(response.main.sea_level)}</strong>`;
         })
-        .catch(error => console.log(error));
+        .catch(error => console.error(error));
 }
-
 
 const Reload = () => {
     document.getElementById('reload').addEventListener('click', () => {
         window.location.reload();
-        document.getElementById('input').value = '';
+        InputValue.value = '';
     })
 }
 
 const SearchWeather = () => {
     document.getElementById('btn').addEventListener('click', (e) => {
         e.preventDefault();
-        const names = document.getElementById('input');
-        checkWeather(names.value);
-        document.getElementById('city-name').innerHTML = `Weather for ${names.value}`;
+        if (!InputValue.value) return;
+        FillDataInCard(InputValue.value);
+        document.getElementById('city-name').innerHTML = `Weather for ${InputValue.value}`;
     })
 }
 
-checkWeather('mumbai');
+FillDataInCard('mumbai');
 Reload();
 SearchWeather();
