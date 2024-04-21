@@ -15,25 +15,31 @@
 }
 
 .card {
-    height: 52.7vh;
+    height: 52vh;
     border: none;
+}
+
+.main {
+    margin-top: 65px;
 }
 
 /* media queries */
 
 @media (max-width:600px) {
 
-    .card {
-        height: 30vh;
+    .main{
+        margin-top: 85px;
     }
 
-    .position {
+    .card {
+        height: 32vh;
+    }
+
+    .form {
         position: fixed;
         top: 85px;
         margin: 0 auto;
-    }
-    
-    .row {
-        margin-top: 100px;
+        left: -20px;
+        justify-content: center;
     }
 }
