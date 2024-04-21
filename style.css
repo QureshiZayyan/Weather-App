@@ -5,8 +5,8 @@
     padding: 0;
 }
 
-.body-color {
-    background-color: rgb(219, 219, 219);
+.body {
+    background-color: rgb(199, 195, 195);
     font-family: "Montserrat", sans-serif;
 }
 
@@ -15,5 +15,25 @@
 }
 
 .card {
-    height: 53.5vh;
+    height: 52.7vh;
+    border: none;
+}
+
+/* media queries */
+
+@media (max-width:600px) {
+
+    .card {
+        height: 30vh;
+    }
+
+    .position {
+        position: fixed;
+        top: 85px;
+        margin: 0 auto;
+    }
+    
+    .row {
+        margin-top: 100px;
+    }
 }

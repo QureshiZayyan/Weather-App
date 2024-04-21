@@ -10,23 +10,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="body-color overflow-hidden">
+<body class="body-color body overflow-hidden">
 
-    <nav class="navbar navbar-expand-lg bg-black">
+    <nav class="navbar navbar-expand-lg bg-black overflow-hidden">
         <div class="container-fluid">
             <a class="navbar-brand text-white space" href="#" id="reload">Get Weather</a>
-            <form class="d-flex justify-content-end space" role="search">
+            <form class="d-flex justify-content-end space position" role="search">
                 <input class="form-control me-2 w-50" type="search" placeholder="Search" aria-label="Search" id="input">
-                <button class="btn text-white btn-outline-light" id="btn" type="submit">Search</button>
+                <button class="btn text-white btn-outline-light bg-black " id="btn" type="submit">Search</button>
             </form>
         </div>
         </div>
         </div>
     </nav>
 
-    <main>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-5">
-            <div class="col m-auto mt-4">
+    <main class="overflow-hidden">
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <div class="col m-auto">
                 <div class="card mb-4 rounded-3 shadow-sm w-75 shadow-lg m-auto">
                     <div class="card-header py-3 bg-black text-white">
                         <h4 class="my-0 fw-normal font" id="city-name">Weather for Mumbai</h4>
