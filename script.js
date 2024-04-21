@@ -48,6 +48,6 @@ const SearchWeather = () => {
     })
 }
 
-FillDataInCard('mumbai');
+window.addEventListener('DOMContentLoaded', FillDataInCard('mumbai'));
 Reload();
 SearchWeather();

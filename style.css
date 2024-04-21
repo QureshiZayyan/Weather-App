@@ -13,3 +13,7 @@
 .btn:hover {
     background-color: transparent;
 }
+
+.card {
+    height: 53.5vh;
+}
