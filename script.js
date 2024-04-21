@@ -26,7 +26,8 @@ function FillDataInCard(cityName) {
             document.getElementById('feels-like').innerHTML = `<strong>Feels like: ${addInfo(response.main.feels_like)}</strong>`;
             document.getElementById('max-temp').innerHTML = `<strong>Maximum Temperature: ${addInfo(response.main.temp_max)}</strong>`;
             document.getElementById('min-temp').innerHTML = `<strong>Minimum Temperature: ${addInfo(response.main.temp_min)}</strong>`;
-            document.getElementById('sea-level').innerHTML = `<strong>Sea Level: ${addInfo(response.main.sea_level)}</strong>`;
+            // document.getElementById('sea-level').innerHTML = `<strong>Sea Level: ${(response.weather.description)}</strong>`;
+            console.log(response);
         })
         .catch(error => console.error(error));
 }
