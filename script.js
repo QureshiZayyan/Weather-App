@@ -22,11 +22,11 @@ function FillDataInCard(cityName) {
         .then(response => response.json())
         .then(response => {
             document.getElementById('degree').innerHTML = `${addInfo(response.main.temp)}&deg;C`;
-            document.getElementById('humidity').innerHTML = `<strong>Humidity: ${addInfo(response.main.humidity)}</strong>`;
-            document.getElementById('feels-like').innerHTML = `<strong>Feels like: ${addInfo(response.main.feels_like)}</strong>`;
-            document.getElementById('max-temp').innerHTML = `<strong>Maximum Temperature: ${addInfo(response.main.temp_max)}</strong>`;
-            document.getElementById('min-temp').innerHTML = `<strong>Minimum Temperature: ${addInfo(response.main.temp_min)}</strong>`;
-            // document.getElementById('sea-level').innerHTML = `<strong>Sea Level: ${(response.weather.description)}</strong>`;
+            document.getElementById('humidity').innerHTML = `<strong>Humidity: ${(response.main.humidity) / 100 * 100}%</strong >`;
+            document.getElementById('feels-like').innerHTML = `<strong> Feels like: ${addInfo(response.main.feels_like)}</strong >`;
+            document.getElementById('max-temp').innerHTML = `<strong> Maximum Temperature: ${addInfo(response.main.temp_max)}</strong >`;
+            document.getElementById('min-temp').innerHTML = `<strong> Minimum Temperature: ${addInfo(response.main.temp_min)}</strong >`;
+            document.getElementById('wind-speed').innerHTML = `<strong> Wind Speed: ${Math.round(response.wind.speed * 3.6)} km/h</strong >`;
             console.log(response);
         })
         .catch(error => console.error(error));
@@ -48,6 +48,6 @@ const SearchWeather = () => {
     })
 }
 
-window.addEventListener('DOMContentLoaded', FillDataInCard('mumbai'));
+window.addEventListener('DOMContentLoaded', FillDataInCard('Mumbai'));
 Reload();
 SearchWeather();
