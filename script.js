@@ -21,12 +21,12 @@ function FillDataInCard(cityName) {
     data(cityName)
         .then(response => response.json())
         .then(response => {
-            document.getElementById('degree').innerHTML = `${addInfo(response.main.temp)}&deg;C`;
-            document.getElementById('humidity').innerHTML = `<strong>Humidity: ${(response.main.humidity) / 100 * 100}%</strong>`;
-            document.getElementById('feels-like').innerHTML = `<strong> Feels like: ${addInfo(response.main.feels_like)}</strong>`;
-            document.getElementById('max-temp').innerHTML = `<strong> Maximum Temperature: ${addInfo(response.main.temp_max)}</strong>`;
-            document.getElementById('min-temp').innerHTML = `<strong> Minimum Temperature: ${addInfo(response.main.temp_min)}</strong>`;
-            document.getElementById('wind-speed').innerHTML = `<strong> Wind Speed: ${Math.round(response.wind.speed * 3.6)} km/h</strong>`;
+            degree.innerHTML = `${addInfo(response.main.temp)}&deg;C`;
+            humidity.innerHTML = `<strong>Humidity: ${(response.main.humidity) / 100 * 100}%</strong>`;
+            feelslike.innerHTML = `<strong> Feels like: ${addInfo(response.main.feels_like)}</strong>`;
+            maxtemp.innerHTML = `<strong> Maximum Temperature: ${addInfo(response.main.temp_max)}</strong>`;
+            mintemp.innerHTML = `<strong> Minimum Temperature: ${addInfo(response.main.temp_min)}</strong>`;
+            windspeed.innerHTML = `<strong> Wind Speed: ${Math.round(response.wind.speed * 3.6)} km/h</strong>`;
             console.log(response);
         })
         .catch(error => console.error(error));
@@ -44,7 +44,7 @@ const SearchWeather = () => {
         e.preventDefault();
         if (!InputValue.value) return;
         FillDataInCard(InputValue.value);
-        document.getElementById('city-name').innerHTML = `Weather of ${InputValue.value}`;
+        document.getElementById('city-name').innerHTML = `Weather for ${InputValue.value}`;
     })
 }
 

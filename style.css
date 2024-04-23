@@ -15,12 +15,20 @@
 }
 
 .card {
-    height: 56vh;
+    height: 60vh;
     border: none;
+}
+
+.card-header {
+    min-height: 79px;
 }
 
 .main {
     margin-top: 65px;
+}
+
+#degree {
+    font-size: 3rem;
 }
 
 /* media queries */
