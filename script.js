@@ -13,26 +13,30 @@ function data(cityName) {
     return fetch(url, options)
 }
 
-function addInfo(query) {
-    return Math.round(query - 273.15);
+function ConvertToCelsius(response) {
+    return Math.round(response - 273.15);
+}
+
+function DegreeSymbol() {
+    return `&deg;C`
 }
 
 function FillDataInCard(cityName) {
     data(cityName)
         .then(response => response.json())
         .then(response => {
-            degree.innerHTML = `${addInfo(response.main.temp)}&deg;C`;
-            humidity.innerHTML = `<strong>Humidity: ${(response.main.humidity) / 100 * 100}%</strong>`;
-            feelslike.innerHTML = `<strong> Feels like: ${addInfo(response.main.feels_like)}</strong>`;
-            maxtemp.innerHTML = `<strong> Maximum Temperature: ${addInfo(response.main.temp_max)}</strong>`;
-            mintemp.innerHTML = `<strong> Minimum Temperature: ${addInfo(response.main.temp_min)}</strong>`;
-            windspeed.innerHTML = `<strong> Wind Speed: ${Math.round(response.wind.speed * 3.6)} km/h</strong>`;
+            degree.innerHTML = `${ConvertToCelsius(response.main.temp)}${DegreeSymbol()}`;
+            humidity.innerHTML = `Humidity: ${(response.main.humidity) / 100 * 100}%`;
+            feelslike.innerHTML = `Feels like: ${ConvertToCelsius(response.main.feels_like)}${DegreeSymbol()}`;
+            maxtemp.innerHTML = `Maximum Temperature: ${ConvertToCelsius(response.main.temp_max)}${DegreeSymbol()}`;
+            mintemp.innerHTML = `Minimum Temperature: ${ConvertToCelsius(response.main.temp_min)}${DegreeSymbol()}`;
+            windspeed.innerHTML = `Wind Speed: ${Math.round(response.wind.speed * 3.6)} km/h`;
             console.log(response);
         })
         .catch(error => console.error(error));
 }
 
-const Reload = () => {
+const ReloadPage = () => {
     document.getElementById('reload').addEventListener('click', () => {
         window.location.reload();
         InputValue.value = '';
@@ -49,5 +53,5 @@ const SearchWeather = () => {
 }
 
 window.addEventListener('DOMContentLoaded', FillDataInCard('Mumbai'));
-Reload();
+ReloadPage();
 SearchWeather();

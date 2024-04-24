@@ -23,6 +23,10 @@
     min-height: 79px;
 }
 
+.text-bold {
+    font-weight: bold;
+}
+
 .main {
     margin-top: 65px;
 }
@@ -40,14 +44,13 @@
     }
 
     .card {
-        height: 33vh;
+        height: 60vh;
     }
 
     .form {
-        position: fixed;
-        top: 85px;
-        margin: 0 auto;
-        left: -20px;
-        justify-content: center;
+        position: absolute;
+        top: 10px;
+        left: 140px;
+        right: 7px;
     }
 }
