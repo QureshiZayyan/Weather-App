@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 * {
     margin: 0;
@@ -7,7 +7,7 @@
 
 .body {
     background-color: rgb(227, 224, 224);
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .btn:hover {
@@ -17,6 +17,7 @@
 .card {
     height: 60vh;
     border: none;
+    box-shadow: 0 8px 16px rgba(7, 6, 6, 0.2);
 }
 
 .card-header {
@@ -24,7 +25,7 @@
 }
 
 .text-bold {
-    font-weight: bold;
+    font-weight: bolder;
 }
 
 .main {
@@ -32,7 +33,7 @@
 }
 
 #degree {
-    font-size: 3rem;
+    font-size: 3.1rem;
 }
 
 /* media queries */
@@ -44,7 +45,7 @@
     }
 
     .card {
-        height: 40vh;
+        height: 41vh;
     }
 
     .form {
