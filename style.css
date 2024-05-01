@@ -5,9 +5,10 @@
     padding: 0;
 }
 
-.body {
+body {
     background-color: rgb(227, 224, 224);
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
+    overflow: hidden;
 }
 
 .btn:hover {

@@ -1,7 +1,7 @@
 
 let InputValue = document.getElementById('input');
 
-function data(cityName) {
+const data = (cityName) => {
     const url = `https://weather-api138.p.rapidapi.com/weather?city_name=${cityName}`
     const options = {
         method: 'GET',
@@ -13,15 +13,15 @@ function data(cityName) {
     return fetch(url, options)
 }
 
-function ConvertToCelsius(response) {
+const ConvertToCelsius = (response) => {
     return Math.round(response - 273.15);
 }
 
-function DegreeSymbol() {
+const DegreeSymbol = () => {
     return `&deg;C`
 }
 
-function FillDataInCard(cityName) {
+const FillDataInCard = (cityName) => {
     data(cityName)
         .then(response => response.json())
         .then(response => {
@@ -33,7 +33,12 @@ function FillDataInCard(cityName) {
             windspeed.innerHTML = `Wind Speed: ${Math.round(response.wind.speed * 3.6)} km/h`;
             console.log(response);
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+            console.error(error);
+            document.querySelectorAll('.all').forEach((e) => e.innerHTML = '');
+            errors.innerHTML = 'Please Enter valid City Name';
+        });
+    errors.innerHTML = '';
 }
 
 const ReloadPage = () => {

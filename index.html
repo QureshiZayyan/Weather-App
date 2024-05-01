@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="body-color body overflow-hidden">
+<body>
 
     <nav class="navbar navbar-expand-lg bg-black overflow-hidden">
         <div class="container-fluid">
@@ -28,17 +28,19 @@
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <div class="col m-auto">
                 <div class="card mb-4 rounded-3 w-75 m-auto">
-                    <div class="card-header py-3 text-white bg-black">
-                        <h4 class="my-0 fw-normal" id="city-name">Weather for Mumbai</h4>
+                    <div class="card-header text-white bg-black">
+                        <h3 class="fw-bold" id="city-name">Weather for Mumbai</h3>
                     </div>
                     <div class="card-body px-2 text-bold">
-                        <h1 class="card-title pricing-card-title" id="degree"></h1>
+                        <h1 class="card-title pricing-card-title all" id="degree"><img src="tube-spinner(1).svg" alt=""
+                                width="90px"></h1>
+                        <h5 class="" id="errors"></h5>
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li id="humidity"></li>
-                            <li id="feelslike"></li>
-                            <li id="maxtemp"></li>
-                            <li id="mintemp"></li>
-                            <li id="windspeed"></li>
+                            <li id="humidity" class="all"></li>
+                            <li id="feelslike" class="all"></li>
+                            <li id="maxtemp" class="all"></li>
+                            <li id="mintemp" class="all"></li>
+                            <li id="windspeed" class="all"></li>
                         </ul>
                     </div>
                 </div>
