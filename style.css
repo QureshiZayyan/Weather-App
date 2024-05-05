@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: rgb(227, 224, 224);
+    background-color: rgb(215, 211, 211);
     font-family: 'Poppins';
 }
 
@@ -39,6 +39,10 @@ body {
 /* media queries */
 
 @media (max-width:600px) {
+
+    body {
+        overflow: hidden;
+    }
 
     .main {
         margin-top: 85px;
