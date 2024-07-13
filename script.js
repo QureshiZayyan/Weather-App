@@ -22,15 +22,15 @@ const FillDataInCard = async (cityName) => {
     try {
         const response = await data(cityName);
         const responseData = await response.json();
-
+        console.log(responseData);
         degree.innerHTML = `${ConvertToCelsius(responseData.main.temp)}&deg;C`;
         humidity.innerHTML = `Humidity: ${(responseData.main.humidity) / 100 * 100}%`;
         feelslike.innerHTML = `Feels like: ${ConvertToCelsius(responseData.main.feels_like)}&deg;C`;
         maxtemp.innerHTML = `Maximum Temperature: ${ConvertToCelsius(responseData.main.temp_max)}&deg;C`;
         mintemp.innerHTML = `Minimum Temperature: ${ConvertToCelsius(responseData.main.temp_min)}&deg;C`;
-        windspeed.innerHTML = `Wind Speed: ${Math.round(responseData.wind.speed * 3.6)} km/h`;
+        raininfo.innerHTML = `Rain Info: ${responseData.weather[0].description}`
         DataError.innerHTML = '';
-
+        console.log(responseData);
     } catch (error) {
         console.error(error);
         document.querySelectorAll('.all').forEach((e) => e.innerHTML = '');
@@ -51,6 +51,7 @@ const SearchWeather = () => {
         if (!InputValue.value) return;
         FillDataInCard(InputValue.value);
         document.getElementById('city-name').innerHTML = `Weather for ${InputValue.value}`;
+        InputValue.value = '';
     })
 }
 
