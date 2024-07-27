@@ -75,7 +75,7 @@ const App = () => {
       <main className="main overflow-hidden">
         <div className="row row-cols-1 row-cols-md-3 text-center align-items-center">
           <div className="col m-auto">
-            <div className="card mb-4 rounded-3 w-50 m-auto">
+            <div className="card mb-4 rounded-3 m-auto">
               <div className="card-header text-white bg-black">
                 <h3 className="fw-bold" id="city-name">Weather for {cityName}</h3>
               </div>
