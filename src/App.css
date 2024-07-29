@@ -14,6 +14,11 @@ main {
     overflow: hidden;
 }
 
+.card img {
+    width: 100px;
+    height: auto;
+}
+
 .btn:hover {
     background-color: transparent;
 }
