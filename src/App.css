@@ -21,16 +21,16 @@ main {
 .card {
     border: none;
     box-shadow: 0 8px 16px rgba(7, 6, 6, 0.2);
-    font-size: 1.15rem;
-    width: 25vw;
+    font-size: 1rem;
+    width: 270px;
 }
 
 .card-body {
-    height: 30vh;
+    height: 220px;
 }
 
 .card-header {
-    min-height: 79px;
+    max-height: 79px;
 }
 
 .text-bold {
@@ -42,7 +42,7 @@ main {
 }
 
 #degree {
-    font-size: 3.1rem;
+    font-size: 2.9rem;
 }
 
 /* media queries */
