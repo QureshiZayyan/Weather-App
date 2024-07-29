@@ -26,16 +26,16 @@ main {
 .card {
     border: none;
     box-shadow: 0 8px 16px rgba(7, 6, 6, 0.2);
-    font-size: 1rem;
+    font-size: 1.1rem;
     width: 270px;
 }
 
 .card-body {
-    height: 220px;
+    height: 240px;
 }
 
 .card-header {
-    max-height: 79px;
+    min-height: 79px;
 }
 
 .text-bold {
