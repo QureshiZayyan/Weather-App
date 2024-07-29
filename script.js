@@ -1,5 +1,4 @@
-
-let InputValue = document.getElementById('input');
+const InputValue = document.getElementById('input');
 
 const data = (cityName) => {
     const url = `https://weather-api138.p.rapidapi.com/weather?city_name=${cityName}`
