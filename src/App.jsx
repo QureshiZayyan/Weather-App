@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { MdLocationPin } from "react-icons/md";
 import errorpng from './assets/error.png';
 import loader from './assets/tube-spinner(1).svg';
+import sun from './assets/sun.png';
+import haze from './assets/haze.png';
+import rain from './assets/rain.png';
+import location from './assets/location.png';
 
 const App = () => {
   const [cityName, setCityName] = useState('Mumbai');
   const [weatherData, setWeatherData] = useState(null);
   const [inputText, setInputText] = useState('');
-  // const [errors, setErrors] = useState('');
-  // const [loading, setLoading] = useState();
+  const [country, setCountry] = useState('');
+  // const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-
     const fetchWeatherData = async () => {
-      // setErrors(null)
+      // setLoading(true);
+      setError('');
       try {
         const url = `https://weather-api138.p.rapidapi.com/weather?city_name=${cityName}`;
         const options = {
@@ -31,11 +37,12 @@ const App = () => {
         const data = await response.json();
         console.log(data);
         setWeatherData(data);
-        // setErrors('');
+        setCountry(data.sys.country); // Update country state here
       } catch (error) {
-        console.error(error, error.message);
-        // setErrors('please enter valid city name');
+        console.error(error);
+        setError('Please enter a valid city name');
         setWeatherData(null);
+        setCountry('');
       }
     };
 
@@ -61,7 +68,7 @@ const App = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-black">
         <div className="container-fluid">
-          <a className="navbar-brand text-white fw-bolder" href="#" id="reload" onClick={() => window.location.reload()}>Get Weather</a>
+          <a className="navbar-brand text-white fw-bolder" href="#" id="reload" onClick={() => setCityName('Mumbai')}>Get Weather</a>
           <form onSubmit={submit} className="d-flex justify-content-end form" role="search">
             <input className="form-control me-1 w-50" type="search" placeholder="Search" aria-label="Search" id="input" value={inputText} onChange={change} />
             <button className="btn text-white btn-outline-light bg-black" id="btn" type="submit">Search</button>
@@ -72,18 +79,25 @@ const App = () => {
       <main className="main">
         <div className="row row-cols-1 row-cols-md-3 text-center align-items-center justify-content-center">
           <div className="col m-auto">
-            <div className="card rounded-5 m-auto">
-              <div className="card-header text-white bg-black rounded-5">
-                <h3 className="fw-bold text-center" id="city-name">Weather for {cityName}</h3>
+            <div className="card rounded-5 m-auto position-relative">
+              <div className="card-header text-white bg-black rounded-5 d-flex align-items-center">
+                <h3 className="fw-bold text-center" id="city-name">
+                  <MdLocationPin className='location' size={40} />
+                  {cityName}, {country}
+                </h3>
               </div>
               <div className="card-body px-2 text-bold">
 
                 {
                   !weatherData ? (
-                    <img src={loader} alt="" />
+                    <img src={loader} alt="" className='loader' />
                   )
                     : weatherData && weatherData.main ? (
                       <>
+                        {weatherData.weather[0].description === 'clear sky' ? <img src={sun} alt="" className='icons sun' /> : null}
+                        {weatherData.weather[0].description === 'haze' ? <img src={haze} alt="" className='icons' /> : null}
+                        {weatherData.weather[0].description === 'mist' ? <img src={rain} alt="" className='icons' /> : null}
+
                         <h1 className="card-title" id="degree">
                           {convertToCelsius(weatherData.main.temp)}&deg;C
                         </h1>
@@ -101,12 +115,11 @@ const App = () => {
                         <img src={errorpng} alt="error" />
                       </>
                 }
-
               </div>
             </div>
           </div>
         </div>
-      </main>
+      </main >
     </>
   );
 };

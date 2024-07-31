@@ -5,18 +5,37 @@
     padding: 0;
 }
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 body {
-    background-color: rgb(221, 215, 215);
-    font-family: 'Poppins';
+    background-color: rgb(218, 213, 213);
+    font-family: 'Poppins', sans-serif;
 }
 
 main {
     overflow: hidden;
 }
 
-.card img {
+.loader {
     width: 100px;
+}
+
+.icons {
+    width: 90px;
     height: auto;
+}
+
+.card .sun {
+    display: inline-block;
+    animation: spin 12s linear infinite;
 }
 
 .btn:hover {
@@ -30,12 +49,15 @@ main {
     width: 270px;
 }
 
+
 .card-body {
-    height: 240px;
+    height: 320px;
 }
 
 .card-header {
-    min-height: 79px;
+    height: 50px;
+    text-align: start;
+    padding-top: 15px;
 }
 
 .text-bold {
