@@ -7,18 +7,17 @@ import sun from './assets/sun.png';
 import haze from './assets/haze.png';
 import rain from './assets/rain.png';
 import location from './assets/location.png';
+// import './demo.js'
 
 const App = () => {
   const [cityName, setCityName] = useState('Mumbai');
   const [weatherData, setWeatherData] = useState(null);
   const [inputText, setInputText] = useState('');
   const [country, setCountry] = useState('');
-  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchWeatherData = async () => {
-      // setLoading(true);
       setError('');
       try {
         const url = `https://weather-api138.p.rapidapi.com/weather?city_name=${cityName}`;
@@ -36,8 +35,8 @@ const App = () => {
         }
         const data = await response.json();
         console.log(data);
+        setCountry(data.sys.country);
         setWeatherData(data);
-        setCountry(data.sys.country); // Update country state here
       } catch (error) {
         console.error(error);
         setError('Please enter a valid city name');
@@ -80,24 +79,25 @@ const App = () => {
         <div className="row row-cols-1 row-cols-md-3 text-center align-items-center justify-content-center">
           <div className="col m-auto">
             <div className="card rounded-5 m-auto position-relative">
-              <div className="card-header text-white bg-black rounded-5 d-flex align-items-center">
-                <h3 className="fw-bold text-center" id="city-name">
+              <div className="card-header text-white bg-black rounded-5 d-flex align-items-center justify-content-center text-center">
+                <h3 className="fw-bold" id="city-name">
                   <MdLocationPin className='location' size={40} />
-                  {cityName}, {country}
+                  {cityName} , {country}
                 </h3>
               </div>
               <div className="card-body px-2 text-bold">
-
-                {
+                {error ?
+                  (<>
+                    <p>{error}</p>
+                    <img src={errorpng} alt="" className='icon' />
+                  </>)
+                  :
                   !weatherData ? (
-                    <img src={loader} alt="" className='loader' />
+                    <img src={loader} alt="" className='icon' />
                   )
-                    : weatherData && weatherData.main ? (
+                    :
+                    (
                       <>
-                        {weatherData.weather[0].description === 'clear sky' ? <img src={sun} alt="" className='icons sun' /> : null}
-                        {weatherData.weather[0].description === 'haze' ? <img src={haze} alt="" className='icons' /> : null}
-                        {weatherData.weather[0].description === 'mist' ? <img src={rain} alt="" className='icons' /> : null}
-
                         <h1 className="card-title" id="degree">
                           {convertToCelsius(weatherData.main.temp)}&deg;C
                         </h1>
@@ -109,11 +109,7 @@ const App = () => {
                           <li id="raininfo" className="all">Rain Info : {weatherData.weather[0].description}</li>
                         </ul>
                       </>
-                    ) :
-                      <>
-                        <h5 id="DataError">Please Enter Valid City Name</h5>
-                        <img src={errorpng} alt="error" />
-                      </>
+                    )
                 }
               </div>
             </div>

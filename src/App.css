@@ -28,7 +28,7 @@ main {
     width: 100px;
 }
 
-.icons {
+.icon {
     width: 90px;
     height: auto;
 }
@@ -49,15 +49,13 @@ main {
     width: 270px;
 }
 
-
 .card-body {
-    height: 320px;
+    height: 240px;
 }
 
 .card-header {
-    height: 50px;
-    text-align: start;
-    padding-top: 15px;
+    height: 71px;
+    padding: 15px 8px 15px 0;
 }
 
 .text-bold {
@@ -85,7 +83,7 @@ main {
     }
 
     .card {
-        height: 41vh;
+        height: 42vh;
     }
 
     .form {
