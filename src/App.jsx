@@ -34,9 +34,10 @@ const App = () => {
           throw new Error('Error fetching data');
         }
         const data = await response.json();
-        console.log(data);
         setCountry(data.sys.country);
         setWeatherData(data);
+        console.log(data);
+
       } catch (error) {
         console.error(error);
         setError('Please enter a valid city name');
@@ -55,7 +56,8 @@ const App = () => {
   const submit = (e) => {
     e.preventDefault();
     if (!inputText) return;
-    setCityName(inputText);
+
+    setCityName(inputText.charAt(0).toUpperCase() + inputText.slice(1));
     setInputText('');
   };
 
