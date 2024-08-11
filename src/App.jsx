@@ -3,16 +3,14 @@ import './App.css';
 import { MdLocationPin } from "react-icons/md";
 import errorpng from './assets/error.png';
 import loader from './assets/tube-spinner(1).svg';
-import sun from './assets/sun.png';
-import haze from './assets/haze.png';
-import rain from './assets/rain.png';
-import location from './assets/location.png';
-// import './demo.js'
+// import sun from './assets/sun.png';
+// import haze from './assets/haze.png';
+// import rain from './assets/rain.png';
 
 const App = () => {
-  const [cityName, setCityName] = useState('Mumbai');
-  const [weatherData, setWeatherData] = useState(null);
-  const [inputText, setInputText] = useState('');
+  const [query, setQuery] = useState('Mumbai');
+  const [weatherdata, setWeatherData] = useState(null);
+  const [input, setInput] = useState('');
   const [country, setCountry] = useState('');
   const [error, setError] = useState('');
 
@@ -20,7 +18,7 @@ const App = () => {
     const fetchWeatherData = async () => {
       setError('');
       try {
-        const url = `https://weather-api138.p.rapidapi.com/weather?city_name=${cityName}`;
+        const url = `https://weather-api138.p.rapidapi.com/weather?city_name=${query}`;
         const options = {
           method: 'GET',
           headers: {
@@ -47,7 +45,7 @@ const App = () => {
     };
 
     fetchWeatherData();
-  }, [cityName]);
+  }, [query]);
 
   const convertToCelsius = (kelvin) => {
     return Math.round(kelvin - 273.15);
@@ -55,23 +53,22 @@ const App = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    if (!inputText) return;
-
-    setCityName(inputText.charAt(0).toUpperCase() + inputText.slice(1));
-    setInputText('');
+    if (!input) return;
+    setQuery(input.charAt(0).toUpperCase() + input.slice(1));
+    setInput('');
   };
 
   const change = (e) => {
-    setInputText(e.target.value);
+    setInput(e.target.value);
   };
 
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-black">
         <div className="container-fluid">
-          <a className="navbar-brand text-white fw-bolder" href="#" id="reload" onClick={() => setCityName('Mumbai')}>Get Weather</a>
+          <a className="navbar-brand text-white fw-bolder" href="#" id="reload" onClick={() => setQuery('Mumbai')}>Get Weather</a>
           <form onSubmit={submit} className="d-flex justify-content-end form" role="search">
-            <input className="form-control me-1 w-50" type="search" placeholder="Search" aria-label="Search" id="input" value={inputText} onChange={change} />
+            <input className="form-control me-1 w-50" type="search" placeholder="Search" aria-label="Search" id="input" value={input} onChange={change} />
             <button className="btn text-white btn-outline-light bg-black" id="btn" type="submit">Search</button>
           </form>
         </div>
@@ -84,7 +81,7 @@ const App = () => {
               <div className="card-header text-white bg-black rounded-5 d-flex align-items-center justify-content-center text-center">
                 <h3 className="fw-bold" id="city-name">
                   <MdLocationPin className='location' size={40} />
-                  {cityName} , {country}
+                  {query} , {country}
                 </h3>
               </div>
               <div className="card-body px-2 text-bold">
@@ -94,21 +91,21 @@ const App = () => {
                     <img src={errorpng} alt="" className='icon' />
                   </>)
                   :
-                  !weatherData ? (
+                  !weatherdata ? (
                     <img src={loader} alt="" className='icon' />
                   )
                     :
                     (
                       <>
                         <h1 className="card-title" id="degree">
-                          {convertToCelsius(weatherData.main.temp)}&deg;C
+                          {convertToCelsius(weatherdata.main.temp)}&deg;C
                         </h1>
                         <ul className="list-unstyled mt-3 mb-4">
-                          <li id="humidity" className="all">Humidity : {weatherData.main.humidity}%</li>
-                          <li id="feelslike" className="all">Feels Like : {convertToCelsius(weatherData.main.feels_like)}&deg;C</li>
-                          <li id="maxtemp" className="all">Max Temp : {convertToCelsius(weatherData.main.temp_max)}&deg;C</li>
-                          <li id="mintemp" className="all">Min Temp : {convertToCelsius(weatherData.main.temp_min)}&deg;C </li>
-                          <li id="raininfo" className="all">Rain Info : {weatherData.weather[0].description}</li>
+                          <li id="humidity" className="all">Humidity : {weatherdata.main.humidity}%</li>
+                          <li id="feelslike" className="all">Feels Like : {convertToCelsius(weatherdata.main.feels_like)}&deg;C</li>
+                          <li id="maxtemp" className="all">Max Temp : {convertToCelsius(weatherdata.main.temp_max)}&deg;C</li>
+                          <li id="mintemp" className="all">Min Temp : {convertToCelsius(weatherdata.main.temp_min)}&deg;C </li>
+                          <li id="raininfo" className="all">Rain Info : {weatherdata.weather[0].description}</li>
                         </ul>
                       </>
                     )
