@@ -46,10 +46,9 @@ main {
 
 .card {
     border: none;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
     font-size: 1.1rem;
-    width: 270px;
-    /* border-radius: 40px; */
+    width: 250px;
 }
 
 .card-body {
@@ -85,14 +84,43 @@ main {
         margin-top: 85px;
     }
 
-    .card {
-        height: 42vh;
-    }
-
     .form {
         position: absolute;
         top: 10px;
         left: 140px;
         right: 7px;
     }
+}
+
+@media (max-width:350px) {
+
+
+    .card {
+        width: 90vw;
+    }
+
+    nav {
+        height: 100px;
+    }
+
+    nav a {
+        margin: auto;
+        text-align: center;
+    }
+
+    .container-fluid {
+        /* background-color: green; */
+        /* padding: 0 */
+    }
+
+    .form {
+        position: initial;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+
+    /* .form input {
+        width: 50vw;
+    } */
 }

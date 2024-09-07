@@ -11,6 +11,7 @@ const Card = () => {
 
     useEffect(() => {
         const fetchWeatherData = async () => {
+            setError('');
             try {
                 const url = `https://weather-api138.p.rapidapi.com/weather?city_name=${query}`;
                 const options = {
