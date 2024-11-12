@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { StateContext } from "./StateContext";
 import { MdLocationPin } from "react-icons/md";
+import Image from "./Image";
 import errorpng from '../assets/error.png';
 import loader from '../assets/tube-spinner(1).svg';
 // import cloudy from '../assets/clouds.png';
@@ -67,20 +68,23 @@ const Card = () => {
 
     return (
         <>
-
-            <div id='container' className="mx-auto flex items-center justify-center rounded-[20px] w-[65vw] h-[380px] overflow-hidden">
+            {/* adding: 89px 0 40px 0; */}
+            <div id='container' className="mx-auto flex items-center justify-center rounded-[20px] w-[65vw] h-[380px] sm:bg-red-700">
                 <div className="weather-image">
                     {
                         weatherdata && weatherdata.weather[0].description === 'haze' && 'mist'
                             ?
-                            <img src={haze} alt="" className="w-[200px]" />
+                            <Image imgsrc={haze} />
+                            // <img src={haze} alt="" className="w-[120px]" />
                             :
                             weatherdata &&
                                 ['overcast clouds', 'scattered clouds', 'broken clouds', 'smoke', 'light rain'].includes(weatherdata.weather[0].description)
                                 ?
-                                <img src={rainy} alt="" className="w-[200px]" />
+                                <Image imgsrc={rainy} />
+                                // <img src={rainy} alt="" className="w-[120px]" />
                                 :
-                                <img src={clearsky} alt="" className="w-[200px]" />
+                                <Image imgsrc={clearsky} />
+                        // <img src={clearsky} alt="" className="w-[120px]" />
                     }
                 </div>
 
@@ -100,12 +104,11 @@ const Card = () => {
                                     : weatherdata ?
                                         (
                                             <>
-                                                <h1 className="card-title text-[60px] font-black text-white text-center" id="degree">
+                                                <h1 className="card-title text-[57px] font-black text-white text-center" id="degree">
                                                     {convertToCelsius(weatherdata.main.temp)}&deg;C
                                                 </h1>
 
                                                 {/* <p className="text-center text-white ">{weatherdata.weather[0].description}</p> */}
-
 
                                                 <div className="card-header">
                                                     <h3 className="font-extrabold text-white flex items-center justify-center text-lg" id="city-name">
@@ -113,6 +116,7 @@ const Card = () => {
                                                         {query} {country ? `, ${country}` : ''}
                                                     </h3>
                                                 </div>
+
 
                                                 <ul className="mt-[20px] flex w-[800px] gap-5">
                                                     <li id="humidity" className="all text-white text-center font-">Humidity <br /> {weatherdata.main.humidity}%</li>
