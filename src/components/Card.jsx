@@ -68,8 +68,7 @@ const Card = () => {
 
     return (
         <>
-            {/* adding: 89px 0 40px 0; */}
-            <div id='container' className="mx-auto flex items-center justify-center rounded-[20px] w-[65vw] h-[380px] sm:bg-red-700">
+            <div id='container' className="pt-[114px] pb-[47px] tracking-[1.5px] mt-[80px] mx-auto flex items-center justify-center rounded-[20px] flex-col">
                 <div className="weather-image">
                     {
                         weatherdata && weatherdata.weather[0].description === 'haze' && 'mist'
@@ -88,7 +87,7 @@ const Card = () => {
                     }
                 </div>
 
-                <div className="card ml-[50px]">
+                <div className="card">
                     <>
                         {
                             loading ? (
@@ -104,24 +103,24 @@ const Card = () => {
                                     : weatherdata ?
                                         (
                                             <>
+
+                                                <div className="card-header mt-[50px] mb-[15px]">
+                                                    <h3 className="font-extrabold text-white flex items-center justify-center text-2xl" id="city-name">
+                                                        <MdLocationPin className='location' size={40} />
+                                                        {query} {country ? `, ${country}` : ''}
+                                                    </h3>
+                                                </div>
+
                                                 <h1 className="card-title text-[57px] font-black text-white text-center" id="degree">
                                                     {convertToCelsius(weatherdata.main.temp)}&deg;C
                                                 </h1>
 
                                                 {/* <p className="text-center text-white ">{weatherdata.weather[0].description}</p> */}
 
-                                                <div className="card-header">
-                                                    <h3 className="font-extrabold text-white flex items-center justify-center text-lg" id="city-name">
-                                                        <MdLocationPin className='location' size={40} />
-                                                        {query} {country ? `, ${country}` : ''}
-                                                    </h3>
-                                                </div>
-
-
-                                                <ul className="mt-[20px] flex w-[800px] gap-5">
-                                                    <li id="humidity" className="all text-white text-center font-">Humidity <br /> {weatherdata.main.humidity}%</li>
-                                                    <li id="feelslike" className="all text-white text-center font-">Feels Like <br /> {convertToCelsius(weatherdata.main.feels_like)}&deg;C</li>
-                                                    <li id="raininfo" className="all text-white text-center font-">OverAll Weather <br /> {weatherdata.weather[0].description}</li>
+                                                <ul className="mt-[20px] flex w-[359px] gap-5">
+                                                    <li id="humidity" className="all text-white text-center font-semibold text-base">Humidity <br /> {weatherdata.main.humidity}%</li>
+                                                    <li id="feelslike" className="all text-white text-center font-semibold text-base">Feels Like <br /> {convertToCelsius(weatherdata.main.feels_like)}&deg;C</li>
+                                                    <li id="raininfo" className="all text-white text-center font-semibold text-base">OverAll Weather <br /> {weatherdata.weather[0].description}</li>
                                                 </ul>
                                             </>
                                         )

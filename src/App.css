@@ -28,6 +28,7 @@ main {
 #container {
     background-color: rgb(13, 13, 14);
      /* background: linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(26, 26, 26, 0.8), rgba(29, 29, 29, 0.6)); */
+     /* background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); */
 }
 
 .loader {
@@ -53,7 +54,7 @@ main {
 
 .card {
     border: none;
-    width: 260px;
+    /* width: 260px; */
 }
 
 .card-body {
@@ -90,6 +91,14 @@ main {
         top: 10px;
         left: 140px;
         right: 7px;
+    }
+
+    #container{
+        width: 95vw;
+    }
+
+    #input{
+        width: 50vw;
     }
 }
 
