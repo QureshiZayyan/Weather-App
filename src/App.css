@@ -26,9 +26,8 @@ main {
 }
 
 #container {
-    background-color: rgb(13, 13, 14);
-     /* background: linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(26, 26, 26, 0.8), rgba(29, 29, 29, 0.6)); */
-     /* background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); */
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1), rgb(0 0 0 / 80%), rgba(29, 29, 29, 0.6));
+    margin: 52px auto 0 auto;
 }
 
 .loader {
@@ -43,9 +42,8 @@ main {
     color: white;
 }
 
-.card .sun {
-    display: inline-block;
-    animation: spin 12s linear infinite;
+#icon {
+    animation: spin 5.5s linear infinite;
 }
 
 .btn:hover {
@@ -94,7 +92,12 @@ main {
     }
 
     #container{
+        /* width: 95vw; */
         width: 95vw;
+    }
+
+    ul{
+        width: 250px;
     }
 
     #input{
