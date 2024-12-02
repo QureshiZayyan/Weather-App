@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { StateContext } from "./StateContext";
+import { StateContext } from "../states/StateContext";
 import { MdLocationPin } from "react-icons/md";
-import errorpng from "../assets/error.png";
-import loader from "../assets/tube-spinner(1).svg";
 import { RiLoader3Fill } from "react-icons/ri";
+import { MdErrorOutline } from "react-icons/md";
 
 const Card = () => {
     const { query, weatherdata, setWeatherdata, setCountry, country } = useContext(StateContext);
@@ -19,7 +18,7 @@ const Card = () => {
                 method: "GET",
                 headers: {
                     "X-RapidAPI-Host": "weather-api138.p.rapidapi.com",
-                    "X-RapidAPI-Key": "577c8f1abemsha8e89a4c8d67695p17cfcdjsn0556ea36e1a7",
+                    "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
                 },
             };
 
@@ -32,7 +31,6 @@ const Card = () => {
             setWeatherdata(data);
             setCountry(data.sys.country);
         } catch (error) {
-            console.error(error);
             setError("Please enter a valid city name");
             setWeatherdata(null);
             setCountry("");
@@ -52,11 +50,11 @@ const Card = () => {
     return (
         <div className="card ">
             {loading ? (
-                <RiLoader3Fill color="white" size={50} id="icon"/>
+                <RiLoader3Fill color="white" size={50} id="icon" />
             ) : error ? (
-                <div className="error">
-                    <p>{error}</p>
-                    <img src={errorpng} alt="Error" className="icon" />
+                <div className="error flex items-center justify-center flex-col">
+                    <p className="text-white">{error}</p>
+                    <MdErrorOutline size={100} color="white" />
                 </div>
             ) : weatherdata ? (
                 <>
@@ -83,7 +81,9 @@ const Card = () => {
                         </li>
                     </ul>
                 </>
-            ) : null}
+            )
+                :
+                null}
         </div>
     );
 };

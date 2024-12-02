@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { StateContext } from "./StateContext";
+import { StateContext } from "../states/StateContext";
 import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {

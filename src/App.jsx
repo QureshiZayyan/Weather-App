@@ -1,7 +1,7 @@
 import './App.css';
 import Card from './components/Card';
 import Navbar from './components/Navbar';
-import { StateProvider, StateContext } from './components/StateContext';
+import { StateProvider, StateContext } from './states/StateContext';
 import { useContext } from 'react';
 
 const App = () => {
