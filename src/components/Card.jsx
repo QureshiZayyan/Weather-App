@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AddData } from "../slices/data";
 
 const Card = () => {
+
     const weatherData = useSelector((state) => state.data.data);
     const dispatch = useDispatch();
 
@@ -45,7 +46,7 @@ const Card = () => {
                         <p className="text-white">{error}</p>
                         <MdErrorOutline size={100} color="white" />
                     </div>
-                ) : weatherdata ? (
+                ) : weatherData ? (
                     <>
                         <div className="card-header mt-[10px] mb-[15px]">
                             <h3 className="font-extrabold text-white flex items-center justify-center text-2xl" id="city-name">

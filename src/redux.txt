@@ -1,0 +1,1 @@
+first make a store file store.js where we store our states
