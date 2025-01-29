@@ -48,36 +48,36 @@ const Card = () => {
     const convertToCelsius = (kelvin) => Math.round(kelvin - 273.15);
 
     return (
-        <div className="card ">
+        <div className="card px-[20px] border-4 border-red-600">
             {loading ? (
-                <RiLoader3Fill color="white" size={50} id="icon" />
+                <RiLoader3Fill color="black" size={50} id="icon" />
             ) : error ? (
                 <div className="error flex items-center justify-center flex-col">
-                    <p className="text-white">{error}</p>
+                    <p className="text-black">{error}</p>
                     <MdErrorOutline size={100} color="white" />
                 </div>
             ) : weatherdata ? (
                 <>
                     <div className="card-header mt-[10px] mb-[15px]">
-                        <h3 className="font-extrabold text-white flex items-center justify-center text-2xl" id="city-name">
+                        <h3 className="font-extrabold text-black flex items-center justify-center text-2xl" id="city-name">
                             <MdLocationPin className="location" size={40} />
                             {query} {country ? `, ${country}` : ""}
                         </h3>
                     </div>
 
-                    <h1 className="card-title text-[50px] font-black text-white text-center" id="degree">
+                    <h1 className="card-title text-[50px] font-black text-black text-center" id="degree">
                         {convertToCelsius(weatherdata.main.temp)}&deg;C
                     </h1>
 
                     <ul className="mt-[20px] flex gap-5">
-                        <li id="humidity" className="all text-white text-center font-semibold text-base">
-                            Humidity <br /> {weatherdata.main.humidity}%
+                        <li id="humidity" className="all text-black text-center font-semibold text-base">
+                            Humidity in city<br /> {weatherdata.main.humidity}%
                         </li>
-                        <li id="feelslike" className="all text-white text-center font-semibold text-base">
-                            Feels Like <br /> {convertToCelsius(weatherdata.main.feels_like)}&deg;C
+                        <li id="feelslike" className="all text-black text-center font-semibold text-base">
+                            Feels Like<br /> {convertToCelsius(weatherdata.main.feels_like)}&deg;C
                         </li>
-                        <li id="raininfo" className="all text-white text-center font-semibold text-base">
-                            Overall Weather <br /> {weatherdata.weather[0].description}
+                        <li id="raininfo" className="all text-black text-center font-semibold text-base">
+                            overall Weather<br /> {weatherdata.weather[0].description}
                         </li>
                     </ul>
                 </>

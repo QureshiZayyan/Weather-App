@@ -16,9 +16,8 @@
 }
 
 body {
-    /* background-color: rgb(231, 225, 225); */
     font-family: 'Poppins', sans-serif;
-    /* background-color: grey; */
+    background: radial-gradient(circle, #08012B, #2B1055, #5A189A);
 }
 
 main {
@@ -26,7 +25,8 @@ main {
 }
 
 #container {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 1), rgb(0 0 0 / 80%), rgba(29, 29, 29, 0.6));
+    /* background: linear-gradient(90deg, rgba(0, 0, 0, 1), rgb(0 0 0 / 80%), rgba(29, 29, 29, 0.6)); */
+    background-color: white;
     margin: 52px auto 0 auto;
 }
 
@@ -87,16 +87,16 @@ main {
         right: 7px;
     }
 
-    #container{
+    #container {
         /* width: 95vw; */
         width: 95vw;
     }
 
-    ul{
+    ul {
         width: 250px;
     }
 
-    #input{
+    #input {
         width: 50vw;
     }
 }

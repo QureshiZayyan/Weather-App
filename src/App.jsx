@@ -16,7 +16,7 @@ const AppContent = () => {
   const { weatherdata } = useContext(StateContext);
 
   return (
-    <div id='container' className="h-[350px] pt-[21px] pb-[8px] tracking-[1.5px] mt-[80px] flex items-center justify-center rounded-[24px] flex-col w-[38vw]">
+    <div id='container' className="h-[350px] pt-[21px] pb-[8px] tracking-[1.5px] mt-[80px] flex items-center justify-center rounded-[24px] flex-col w-[30vw]">
       {weatherdata ? <Navbar /> : null}
       <Card />
     </div>
